@@ -26,9 +26,8 @@ final class NumberFootnotesListener
             $node = $event->getNode();
 
             if ($node instanceof FootnoteRef && $event->isEntering()) {
-                // Anonymous footnote need to create a footnote from its content
                 $existingReference = $node->getReference();
-                // rewrite reference
+                // rewrite reference title to use a numeric link
                 $newReference = new Reference(
                     $existingReference->getLabel(),
                     $existingReference->getDestination(),

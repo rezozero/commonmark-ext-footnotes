@@ -33,10 +33,13 @@ final class GatherFootnotesListener
             }
         }
 
-        $container = $this->getFootnotesContainer($document);
-        ksort($footnotes);
-        foreach ($footnotes as $footnote) {
-            $container->appendChild($footnote);
+        if (count($footnotes) > 0) {
+            // Only add a footnote container if there are any
+            $container = $this->getFootnotesContainer($document);
+            ksort($footnotes);
+            foreach ($footnotes as $footnote) {
+                $container->appendChild($footnote);
+            }
         }
     }
 
