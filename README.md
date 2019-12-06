@@ -20,7 +20,7 @@ use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
-use League\CommonMark\Ext\Footnote\FootnoteExtension;
+use RZ\CommonMark\Ext\Footnote\FootnoteExtension;
 
 // Obtain a pre-configured Environment with all the standard CommonMark parsers/renderers ready-to-go
 $environment = Environment::createCommonMarkEnvironment();
@@ -36,10 +36,6 @@ echo $converter->convertToHtml('# Hello World!');
 
 Syntax
 ------
-
-This package is fully compatible with GFM-style tables:
-
-### Simple
 
 Code:
 ```markdown
