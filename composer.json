@@ -1,7 +1,9 @@
 {
     "name": "rezozero/commonmark-ext-footnotes",
-    "description": "thphpleague commonmark extension for Markdown footnotes.",
-    "type": "library",
+    "description": "A footnote extension for CommonMark PHP implementation",
+    "type": "commonmark-extension",
+    "keywords": ["markdown","parser","commonmark", "footnote"],
+    "homepage": "https://github.com/rezozero/commonmark-ext-footnotes",
     "license": "MIT",
     "authors": [
         {
