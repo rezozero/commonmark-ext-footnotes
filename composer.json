@@ -1,0 +1,21 @@
+{
+    "name": "rezozero/commonmark-ext-footnotes",
+    "description": "thphpleague commonmark extension for Markdown footnotes.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ambroise Maupate",
+            "email": "ambroise@rezo-zero.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "league/commonmark": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "RZ\\CommonMark\\Ext\\Footnote\\": "src/"
+        }
+    }
+}
