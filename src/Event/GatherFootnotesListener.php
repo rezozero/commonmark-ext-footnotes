@@ -28,8 +28,13 @@ final class GatherFootnotesListener
             if ($node instanceof Footnote && $event->isEntering()) {
                 // Look for existing reference with footnote label
                 $ref = $document->getReferenceMap()->getReference($node->getReference()->getLabel());
-                // Use numeric title to get footnotes order
-                $footnotes[intval($ref->getTitle())] = $node;
+                if (null !== $ref) {
+                    // Use numeric title to get footnotes order
+                    $footnotes[intval($ref->getTitle())] = $node;
+                } else {
+                    // Footnote call is missing, append footnote at the end
+                    $footnotes[999999] = $node;
+                }
             }
         }
 
