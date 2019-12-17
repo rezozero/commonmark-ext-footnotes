@@ -1,7 +1,10 @@
 CommonMark footnotes Extension
-==========================
+==============================
 
 The Footnotes extension adds the ability to create footnotes in CommonMark documents.
+
+[![Packagist Version](https://img.shields.io/packagist/v/rezozero/commonmark-ext-footnotes)](https://packagist.org/packages/rezozero/commonmark-ext-footnotes)
+[![Build Status](https://travis-ci.org/rezozero/commonmark-ext-footnotes.svg?branch=master)](https://travis-ci.org/rezozero/commonmark-ext-footnotes)
 
 Installation
 ------------
