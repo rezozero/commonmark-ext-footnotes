@@ -39,6 +39,13 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
 
     protected function getReference(string $label)
     {
-        return new Reference(uniqid('fn'), '#fn-', $label);
+        $refLabel = Reference::normalizeReference($label);
+        if (function_exists('mb_strtolower')) {
+            $refLabel = mb_strtolower(str_replace(' ', '-', $refLabel));
+        } else {
+            $refLabel = strtolower(str_replace(' ', '-', $refLabel));
+        }
+        $refLabel = substr($refLabel, 0, 20);
+        return new Reference($refLabel, '#fn-', $label);
     }
 }

@@ -15,6 +15,13 @@
         "php": ">=7.1",
         "league/commonmark": "^1.1"
     },
+    "require-dev": {
+        "satooshi/php-coveralls": "^2.0",
+        "squizlabs/php_codesniffer": "^3.3",
+        "friendsofphp/php-cs-fixer": "^2.13",
+        "phpstan/phpstan": "^0.11.19",
+        "phpunit/phpunit": "^8.5"
+    },
     "autoload": {
         "psr-4": {
             "RZ\\CommonMark\\Ext\\Footnote\\": "src/"

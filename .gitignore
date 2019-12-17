@@ -11,3 +11,6 @@ composer.phar
 composer.lock
 
 # End of https://www.gitignore.io/api/composer
+
+/report.txt
+.phpunit.result.cache

@@ -24,7 +24,11 @@ final class FootnoteBlockParser implements BlockParserInterface
             return false;
         }
 
-        $match = RegexHelper::matchAll('/^\[\^([^\n^\]]+)\]\:\s/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
+        $match = RegexHelper::matchAll(
+            '/^\[\^([^\n^\]]+)\]\:\s/',
+            $cursor->getLine(),
+            $cursor->getNextNonSpacePosition()
+        );
         if (!$match) {
             return false;
         }
