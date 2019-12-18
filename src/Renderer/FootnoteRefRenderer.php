@@ -9,7 +9,7 @@ use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use RZ\CommonMark\Ext\Footnote\FootnoteRef;
 
-final class FootnoteReferenceMarkerRenderer implements InlineRendererInterface
+final class FootnoteRefRenderer implements InlineRendererInterface
 {
     /**
      * @param AbstractInline           $inline

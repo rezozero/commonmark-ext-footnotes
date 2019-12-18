@@ -10,7 +10,6 @@ use RZ\CommonMark\Ext\Footnote\FootnoteRef;
 
 final class FootnoteRefParser implements InlineParserInterface
 {
-
     /**
      * @return string[]
      */
@@ -23,17 +22,20 @@ final class FootnoteRefParser implements InlineParserInterface
     {
         $container = $inlineContext->getContainer();
         $cursor = $inlineContext->getCursor();
-
-        $m = $cursor->match('/\[\^[^\n^\]]+\]/');
-        if ($m === null) {
+        if ($cursor->getCharacter() !== '[') {
             return false;
         }
+        $state = $cursor->saveState();
 
-        if (preg_match('#\[\^([^\]]+)\]#', $m, $matches) > 0) {
-            $container->appendChild(new FootnoteRef($this->getReference($matches[1])));
-            return true;
+        $m = $cursor->match('#\[\^([^\]]+)\]#');
+        if ($m !== null) {
+            if (preg_match('#\[\^([^\]]+)\]#', $m, $matches) > 0) {
+                $container->appendChild(new FootnoteRef($this->getReference($matches[1])));
+                return true;
+            }
         }
 
+        $cursor->restoreState($state);
         return false;
     }
 

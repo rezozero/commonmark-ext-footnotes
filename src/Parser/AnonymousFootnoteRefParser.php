@@ -22,18 +22,18 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
     {
         $container = $inlineContext->getContainer();
         $cursor = $inlineContext->getCursor();
+        $state = $cursor->saveState();
 
         $m = $cursor->match('/\^\[[^\n^\]]+\]/');
-        if ($m === null) {
-            return false;
+        if ($m !== null) {
+            if (preg_match('#\^\[([^\]]+)\]#', $m, $matches) > 0) {
+                $reference = $this->getReference($matches[1]);
+                $container->appendChild(new FootnoteRef($reference, $matches[1]));
+                return true;
+            }
         }
 
-        if (preg_match('#\^\[([^\]]+)\]#', $m, $matches) > 0) {
-            $reference = $this->getReference($matches[1]);
-            $container->appendChild(new FootnoteRef($reference, $matches[1]));
-            return true;
-        }
-
+        $cursor->restoreState($state);
         return false;
     }
 

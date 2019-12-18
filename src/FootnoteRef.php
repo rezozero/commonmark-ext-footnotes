@@ -17,10 +17,11 @@ final class FootnoteRef extends AbstractInline
      */
     protected $content;
 
-    public function __construct(ReferenceInterface $reference, ?string $content = null)
+    public function __construct(ReferenceInterface $reference, ?string $content = null, array $data = [])
     {
         $this->reference = $reference;
         $this->content = $content;
+        $this->data = $data;
     }
 
     /**
