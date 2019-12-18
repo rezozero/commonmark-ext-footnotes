@@ -36,9 +36,9 @@ final class FootnoteBlockParser implements BlockParserInterface
         $cursor->advanceToNextNonSpaceOrTab();
         $cursor->advanceBy(\strlen($match[0]));
         $str = $cursor->getRemainder();
-        $str = \preg_replace('/^\[\^([^\n^\]]+)\]\:\s/', '', $str);
+        \preg_replace('/^\[\^([^\n^\]]+)\]\:\s/', '', $str);
 
-        if (preg_match('/^\[\^([^\n^\]]+)\]\:\s/', $match[0], $matches) > 0) {
+        if (\preg_match('/^\[\^([^\n^\]]+)\]\:\s/', $match[0], $matches) > 0) {
             $context->addBlock(new Footnote($this->getReference($matches[1])));
             $context->setBlocksParsed(true);
             return true;

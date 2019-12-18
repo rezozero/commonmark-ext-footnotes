@@ -23,7 +23,7 @@ class FootnoteExtension implements ExtensionInterface
     {
         $environment->addInlineParser(new AnonymousFootnoteRefParser(), 35);
         $environment->addInlineParser(new FootnoteRefParser(), 51);
-        $environment->addBlockParser(new FootnoteBlockParser(), 40);
+        $environment->addBlockParser(new FootnoteBlockParser(), 51);
 
         $environment->addInlineRenderer(FootnoteRef::class, new FootnoteRefRenderer());
         $environment->addInlineRenderer(FootnoteBackref::class, new FootnoteBackrefRenderer());

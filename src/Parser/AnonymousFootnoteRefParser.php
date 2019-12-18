@@ -22,11 +22,15 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
     {
         $container = $inlineContext->getContainer();
         $cursor = $inlineContext->getCursor();
+        $nextChar = $cursor->peek();
+        if ($nextChar !== '[') {
+            return false;
+        }
         $state = $cursor->saveState();
 
         $m = $cursor->match('/\^\[[^\n^\]]+\]/');
         if ($m !== null) {
-            if (preg_match('#\^\[([^\]]+)\]#', $m, $matches) > 0) {
+            if (\preg_match('#\^\[([^\]]+)\]#', $m, $matches) > 0) {
                 $reference = $this->getReference($matches[1]);
                 $container->appendChild(new FootnoteRef($reference, $matches[1]));
                 return true;
@@ -40,12 +44,12 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
     protected function getReference(string $label)
     {
         $refLabel = Reference::normalizeReference($label);
-        if (function_exists('mb_strtolower')) {
-            $refLabel = mb_strtolower(str_replace(' ', '-', $refLabel));
+        if (\function_exists('mb_strtolower')) {
+            $refLabel = \mb_strtolower(\str_replace(' ', '-', $refLabel));
         } else {
-            $refLabel = strtolower(str_replace(' ', '-', $refLabel));
+            $refLabel = \strtolower(\str_replace(' ', '-', $refLabel));
         }
-        $refLabel = substr($refLabel, 0, 20);
+        $refLabel = \substr($refLabel, 0, 20);
         return new Reference($refLabel, '#fn-', $label);
     }
 }
