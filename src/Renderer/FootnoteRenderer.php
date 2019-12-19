@@ -26,7 +26,7 @@ final class FootnoteRenderer implements BlockRendererInterface
         }
         $attrs = $block->getData('attributes', [
             'class' => 'footnote',
-            'id' => 'fn-' . $block->getReference()->getLabel()
+            'id' => 'fn-' . \mb_strtolower($block->getReference()->getLabel())
         ]);
 
         $block->lastChild()->appendChild(new FootnoteBackref($block->getReference()));

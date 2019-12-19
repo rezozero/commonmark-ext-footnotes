@@ -28,7 +28,7 @@ final class FootnoteBackrefRenderer implements InlineRendererInterface
             [
                 'class' => 'footnote-backref',
                 'rev' => 'footnote',
-                'href' => $inline->getReference()->getDestination() . $inline->getReference()->getLabel()
+                'href' => $inline->getReference()->getDestination() . \mb_strtolower($inline->getReference()->getLabel())
             ],
             '&#8617;',
             true

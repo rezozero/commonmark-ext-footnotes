@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace League\CommonMark\Ext\Footnote\Tests\Functional;
 
 use League\CommonMark\DocParser;
+use League\CommonMark\DocParserInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Environment;
+use League\CommonMark\Extras\CommonMarkExtrasExtension;
 use League\CommonMark\HtmlRenderer;
 use PHPUnit\Framework\TestCase;
 use RZ\CommonMark\Ext\Footnote\FootnoteExtension;
@@ -16,15 +18,39 @@ use RZ\CommonMark\Ext\Footnote\FootnoteExtension;
  */
 class LocalDataTest extends TestCase
 {
+    /**
+     * @var Environment
+     */
     private $environment;
+    /**
+     * @var DocParser
+     */
     private $parser;
+    /**
+     * @var Environment
+     */
+    private $extraEnvironment;
+    /**
+     * @var DocParser
+     */
+    private $extraParser;
 
     protected function setUp(): void
     {
+        /*
+         * Test with minimal extensions
+         */
         $this->environment = Environment::createCommonMarkEnvironment();
         $this->environment->addExtension(new FootnoteExtension());
-
         $this->parser = new DocParser($this->environment);
+
+        /*
+         * Test with other extensions
+         */
+        $this->extraEnvironment = Environment::createCommonMarkEnvironment();
+        $this->extraEnvironment->addExtension(new CommonMarkExtrasExtension());
+        $this->extraEnvironment->addExtension(new FootnoteExtension());
+        $this->extraParser = new DocParser($this->extraEnvironment);
     }
 
     /**
@@ -33,7 +59,16 @@ class LocalDataTest extends TestCase
     public function testRenderer(string $markdown, string $html, string $testName): void
     {
         $renderer = new HtmlRenderer($this->environment);
-        $this->assertCommonMark($renderer, $markdown, $html, $testName);
+        $this->assertCommonMark($this->parser, $renderer, $markdown, $html, $testName);
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testExtraRenderer(string $markdown, string $html, string $testName): void
+    {
+        $renderer = new HtmlRenderer($this->extraEnvironment);
+        $this->assertCommonMark($this->extraParser, $renderer, $markdown, $html, $testName);
     }
 
     /**
@@ -53,9 +88,14 @@ class LocalDataTest extends TestCase
         return $ret;
     }
 
-    protected function assertCommonMark(ElementRendererInterface $renderer, $markdown, $html, $testName): void
-    {
-        $documentAST = $this->parser->parse($markdown);
+    protected function assertCommonMark(
+        DocParserInterface $parser,
+        ElementRendererInterface $renderer,
+        $markdown,
+        $html,
+        $testName
+    ): void {
+        $documentAST = $parser->parse($markdown);
         $actualResult = $renderer->renderBlock($documentAST);
 
         $failureMessage = sprintf('Unexpected result for "%s" test', $testName);

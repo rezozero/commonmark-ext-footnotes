@@ -41,7 +41,7 @@ final class GatherFootnotesListener
         if (count($footnotes) > 0) {
             // Only add a footnote container if there are any
             $container = $this->getFootnotesContainer($document);
-            ksort($footnotes);
+            \ksort($footnotes);
             foreach ($footnotes as $footnote) {
                 $container->appendChild($footnote);
             }
