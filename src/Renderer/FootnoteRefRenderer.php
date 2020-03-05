@@ -28,7 +28,7 @@ final class FootnoteRefRenderer implements InlineRendererInterface
             [
                 'class' => 'footnote-ref',
                 'id' => 'fn-ref-' . \mb_strtolower($inline->getReference()->getLabel()),
-                'href' => $inline->getReference()->getDestination() . \mb_strtolower($inline->getReference()->getLabel())
+                'href' => \mb_strtolower($inline->getReference()->getDestination()),
             ],
             new HtmlElement('sup', [], $inline->getReference()->getTitle()),
             true

@@ -50,6 +50,6 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
             $refLabel = \strtolower(\str_replace(' ', '-', $refLabel));
         }
         $refLabel = \substr($refLabel, 0, 20);
-        return new Reference($refLabel, '#fn-', $label);
+        return new Reference($refLabel, '#fn-' . $refLabel, $label);
     }
 }

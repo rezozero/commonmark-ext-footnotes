@@ -10,6 +10,11 @@ use League\CommonMark\Reference\ReferenceInterface;
 final class Footnote extends AbstractBlock
 {
     /**
+     * @var array
+     */
+    protected $backrefs;
+
+    /**
      * @var ReferenceInterface
      */
     protected $reference;
@@ -22,6 +27,7 @@ final class Footnote extends AbstractBlock
     public function __construct(ReferenceInterface $reference)
     {
         $this->reference = $reference;
+        $this->backrefs = [];
     }
 
     public function canContain(AbstractBlock $block): bool
@@ -45,5 +51,19 @@ final class Footnote extends AbstractBlock
     public function getReference(): ReferenceInterface
     {
         return $this->reference;
+    }
+
+    public function addBackref(FootnoteBackref $backref)
+    {
+        $this->backrefs[] = $backref;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBackrefs(): array
+    {
+        return $this->backrefs;
     }
 }

@@ -48,6 +48,6 @@ final class FootnoteBlockParser implements BlockParserInterface
 
     protected function getReference(string $label)
     {
-        return new Reference($label, '#fn-ref-', $label);
+        return new Reference($label, $label, $label);
     }
 }

@@ -6,7 +6,9 @@ namespace RZ\CommonMark\Ext\Footnote\Event;
 use League\CommonMark\Block\Element\Document;
 use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Event\DocumentParsedEvent;
+use League\CommonMark\Reference\Reference;
 use RZ\CommonMark\Ext\Footnote\Footnote;
+use RZ\CommonMark\Ext\Footnote\FootnoteBackref;
 use RZ\CommonMark\Ext\Footnote\FootnoteContainer;
 
 final class GatherFootnotesListener
@@ -33,7 +35,21 @@ final class GatherFootnotesListener
                     $footnotes[intval($ref->getTitle())] = $node;
                 } else {
                     // Footnote call is missing, append footnote at the end
-                    $footnotes[999999] = $node;
+                    $footnotes[INF] = $node;
+                }
+
+                /*
+                 * Look for all footnote refs pointing to this footnote
+                 * and create each footnote backrefs.
+                 */
+                $backrefs = $document->getData('#fn-' . $node->getReference()->getDestination(), []);
+                /** @var Reference $backref */
+                foreach ($backrefs as $backref) {
+                    $node->addBackref(new FootnoteBackref(new Reference(
+                        $backref->getLabel(),
+                        '#fn-ref-' . $backref->getLabel(),
+                        $backref->getTitle()
+                    )));
                 }
             }
         }

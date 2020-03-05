@@ -42,6 +42,6 @@ final class FootnoteRefParser implements InlineParserInterface
 
     protected function getReference(string $label)
     {
-        return new Reference($label, '#fn-', $label);
+        return new Reference($label, '#fn-' . $label, $label);
     }
 }
