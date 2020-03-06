@@ -31,7 +31,7 @@ final class FootnoteRenderer implements BlockRendererInterface
         ]);
 
         foreach ($block->getBackrefs() as $backref) {
-            $block->lastChild()->appendChild(new HtmlInline('&#160;'));
+            $block->lastChild()->appendChild(new HtmlInline('&nbsp;'));
             $block->lastChild()->appendChild($backref);
         }
 
