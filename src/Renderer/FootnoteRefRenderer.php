@@ -24,14 +24,19 @@ final class FootnoteRefRenderer implements InlineRendererInterface
         }
 
         return new HtmlElement(
-            'a',
-            [
+            'sup',
+            [],
+            new HTMLElement(
+                'a',
+                [
                 'class' => 'footnote-ref',
                 'id' => 'fn-ref-' . \mb_strtolower($inline->getReference()->getLabel()),
                 'href' => \mb_strtolower($inline->getReference()->getDestination()),
-            ],
-            new HtmlElement('sup', [], $inline->getReference()->getTitle()),
+                ],
+                $inline->getReference()->getTitle(),
+            ),
             true
         );
+
     }
 }
