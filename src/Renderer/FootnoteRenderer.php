@@ -7,7 +7,7 @@ use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
-use League\CommonMark\Inline\Element\Text;
+use League\CommonMark\Inline\Element\HtmlInline;
 use RZ\CommonMark\Ext\Footnote\Footnote;
 use RZ\CommonMark\Ext\Footnote\FootnoteBackref;
 
@@ -31,7 +31,7 @@ final class FootnoteRenderer implements BlockRendererInterface
         ]);
 
         foreach ($block->getBackrefs() as $backref) {
-            $block->lastChild()->appendChild(new Text(' '));
+            $block->lastChild()->appendChild(new HtmlInline('&#160;'));
             $block->lastChild()->appendChild($backref);
         }
 
