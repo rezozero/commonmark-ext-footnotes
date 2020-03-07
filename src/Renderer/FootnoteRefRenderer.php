@@ -35,10 +35,9 @@ final class FootnoteRefRenderer implements InlineRendererInterface
                     'href' => \mb_strtolower($inline->getReference()->getDestination()),
                     'role' => 'doc-noteref',
                 ],
-                $inline->getReference()->getTitle(),
+                $inline->getReference()->getTitle()
             ),
             true
         );
-
     }
 }
