@@ -51,15 +51,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi[^note1] leo risus
 Result:
 ```html
 <p>
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Morbi<a class="footnote-ref" id="fn-ref-note1" href="#fn-note1"><sup>1</sup></a> leo risus, porta ac consectetur ac.
+    Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Morbi<sup id="fn-ref-note1"><a class="footnote-ref" href="#fn-note1" role="doc-noteref">1</a></sup> leo risus, porta ac consectetur ac.
 </p>
 <div class="footnotes">
-    <hr>
+    <hr />
     <ol>
         <li class="footnote" id="fn-note1">
-            <p>Elit Malesuada Ridiculus<a class="footnote-backref" rev="footnote" href="#fn-ref-note1">↩</a></p>
+            <p>
+                Elit Malesuada Ridiculus <a class="footnote-backref" rev="footnote" href="#fn-ref-note1">&#8617;</a>
+            </p>
         </li>
     </ol>
 </div>
