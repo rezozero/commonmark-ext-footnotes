@@ -27,7 +27,8 @@ final class FootnoteRenderer implements BlockRendererInterface
         }
         $attrs = $block->getData('attributes', [
             'class' => 'footnote',
-            'id' => 'fn-' . \mb_strtolower($block->getReference()->getLabel())
+            'id' => 'fn:' . \mb_strtolower($block->getReference()->getLabel()),
+            'role' => 'doc-endnote'
         ]);
 
         foreach ($block->getBackrefs() as $backref) {

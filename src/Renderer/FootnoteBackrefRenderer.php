@@ -28,7 +28,8 @@ final class FootnoteBackrefRenderer implements InlineRendererInterface
             [
                 'class' => 'footnote-backref',
                 'rev' => 'footnote',
-                'href' => \mb_strtolower($inline->getReference()->getDestination())
+                'href' => \mb_strtolower($inline->getReference()->getDestination()),
+                'role' => 'doc-backlink'
             ],
             '&#8617;',
             true
