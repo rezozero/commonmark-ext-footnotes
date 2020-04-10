@@ -8,6 +8,11 @@ use League\CommonMark\DocParser;
 use League\CommonMark\DocParserInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Environment;
+use League\CommonMark\Extension\Autolink\AutolinkExtension;
+use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
+use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\Extension\TaskList\TaskListExtension;
 use League\CommonMark\Extras\CommonMarkExtrasExtension;
 use League\CommonMark\HtmlRenderer;
 use PHPUnit\Framework\TestCase;
@@ -48,7 +53,11 @@ class LocalDataTest extends TestCase
          * Test with other extensions
          */
         $this->extraEnvironment = Environment::createCommonMarkEnvironment();
-        $this->extraEnvironment->addExtension(new CommonMarkExtrasExtension());
+        $this->extraEnvironment->addExtension(new AutolinkExtension());
+        $this->extraEnvironment->addExtension(new SmartPunctExtension());
+        $this->extraEnvironment->addExtension(new StrikethroughExtension());
+        $this->extraEnvironment->addExtension(new TableExtension());
+        $this->extraEnvironment->addExtension(new TaskListExtension());
         $this->extraEnvironment->addExtension(new FootnoteExtension());
         $this->extraParser = new DocParser($this->extraEnvironment);
     }
