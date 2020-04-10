@@ -24,7 +24,8 @@ final class FootnoteContainerRenderer implements BlockRendererInterface
             throw new \InvalidArgumentException('Incompatible block type: ' . \get_class($block));
         }
         $attrs = $block->getData('attributes', [
-            'class' => 'footnotes'
+            'class' => 'footnotes',
+            'role' => 'doc-endnotes'
         ]);
 
         return new HtmlElement(
