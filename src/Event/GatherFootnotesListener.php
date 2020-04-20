@@ -42,12 +42,12 @@ final class GatherFootnotesListener
                  * Look for all footnote refs pointing to this footnote
                  * and create each footnote backrefs.
                  */
-                $backrefs = $document->getData('#fn-' . $node->getReference()->getDestination(), []);
+                $backrefs = $document->getData('#fn:' . $node->getReference()->getDestination(), []);
                 /** @var Reference $backref */
                 foreach ($backrefs as $backref) {
                     $node->addBackref(new FootnoteBackref(new Reference(
                         $backref->getLabel(),
-                        '#fn-ref-' . $backref->getLabel(),
+                        '#fnref:' . $backref->getLabel(),
                         $backref->getTitle()
                     )));
                 }

@@ -53,14 +53,14 @@ Result:
 <p>
     Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Morbi<sup id="fn-ref-note1"><a class="footnote-ref" href="#fn-note1" role="doc-noteref">1</a></sup> leo risus, porta ac consectetur ac.
+    Morbi<sup id="fnref:note1"><a class="footnote-ref" href="#fn:note1" role="doc-noteref">1</a></sup> leo risus, porta ac consectetur ac.
 </p>
 <div class="footnotes">
     <hr />
     <ol>
-        <li class="footnote" id="fn-note1">
+        <li class="footnote" id="fn:note1">
             <p>
-                Elit Malesuada Ridiculus <a class="footnote-backref" rev="footnote" href="#fn-ref-note1">&#8617;</a>
+                Elit Malesuada Ridiculus <a class="footnote-backref" rev="footnote" href="#fnref:note1">&#8617;</a>
             </p>
         </li>
     </ol>
