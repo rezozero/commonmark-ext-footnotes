@@ -32,7 +32,7 @@ final class AnonymousFootnotesListener
                 $existingReference = $node->getReference();
                 $reference = new Reference(
                     $existingReference->getLabel(),
-                    '#fn-ref-' . $existingReference->getLabel(),
+                    '#fnref:' . $existingReference->getLabel(),
                     $existingReference->getTitle()
                 );
                 $footnote = new Footnote($reference);
