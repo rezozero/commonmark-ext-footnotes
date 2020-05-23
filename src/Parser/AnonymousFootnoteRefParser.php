@@ -44,6 +44,7 @@ final class AnonymousFootnoteRefParser implements InlineParserInterface
     protected function getReference(string $label)
     {
         $refLabel = Reference::normalizeReference($label);
+        $refLabel = trim(preg_replace('#[^a-zA-Z\s]#', ' ', $refLabel));
         if (\function_exists('mb_strtolower')) {
             $refLabel = \mb_strtolower(\str_replace(' ', '-', $refLabel));
         } else {

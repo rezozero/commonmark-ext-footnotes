@@ -7,6 +7,7 @@ use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Event\DocumentParsedEvent;
 use League\CommonMark\Inline\Element\HtmlInline;
+use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Reference\Reference;
 use RZ\CommonMark\Ext\Footnote\Footnote;
 use RZ\CommonMark\Ext\Footnote\FootnoteBackref;
@@ -38,7 +39,7 @@ final class AnonymousFootnotesListener
                 $footnote = new Footnote($reference);
                 $footnote->addBackref(new FootnoteBackref($reference));
                 $paragraph = new Paragraph();
-                $paragraph->appendChild(new HtmlInline($text));
+                $paragraph->appendChild(new Text($text));
                 $footnote->appendChild($paragraph);
                 $document->appendChild($footnote);
             }
