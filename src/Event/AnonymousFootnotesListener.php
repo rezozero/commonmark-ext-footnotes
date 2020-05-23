@@ -6,7 +6,6 @@ namespace RZ\CommonMark\Ext\Footnote\Event;
 use League\CommonMark\Block\Element\Paragraph;
 use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Event\DocumentParsedEvent;
-use League\CommonMark\Inline\Element\HtmlInline;
 use League\CommonMark\Inline\Element\Text;
 use League\CommonMark\Reference\Reference;
 use RZ\CommonMark\Ext\Footnote\Footnote;
