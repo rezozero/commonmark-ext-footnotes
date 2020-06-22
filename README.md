@@ -6,6 +6,10 @@ The Footnotes extension adds the ability to create footnotes in CommonMark docum
 [![Packagist Version](https://img.shields.io/packagist/v/rezozero/commonmark-ext-footnotes)](https://packagist.org/packages/rezozero/commonmark-ext-footnotes)
 [![Build Status](https://travis-ci.org/rezozero/commonmark-ext-footnotes.svg?branch=master)](https://travis-ci.org/rezozero/commonmark-ext-footnotes)
 
+## DEPRECATED
+
+**This extension has been deprecated**.  All of its functionality now exists in [`league/commonmark`](https://github.com/thephpleague/commonmark) 1.5+ under the `League\CommonMark\Extension\Footnote` namespace, so you should upgrade to that version and use that bundled extension instead of this one.
+
 Installation
 ------------
 
